@@ -1,4 +1,30 @@
 import './App.css';
+import { useEffect, useState } from "react";
+
+function Countdown() {
+  const deadline = new Date("2025-06-30T23:59:59").getTime();
+  const [timeLeft, setTimeLeft] = useState(deadline - Date.now());
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft(deadline - Date.now());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (timeLeft <= 0) return <p className="countdown-text">Scaduto!</p>;
+
+  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+  const seconds = Math.floor((timeLeft / 1000) % 60);
+
+  return (
+    <p className="countdown-text">
+      Scadenza tra: {days}g {hours}h {minutes}m {seconds}s
+    </p>
+  );
+}
 
 function App() {
   return (
@@ -8,6 +34,10 @@ function App() {
       <h1>CALL PER 3 RESIDENZE</h1>
       <div className="date">19 SETTEMBRE – 3 OTTOBRE 2025</div>
       <div className="location">📍 SAN LIBERATORE, FRAZ. COLLESTATTE (TR)</div>
+      <div className="countdown">
+  <Countdown />
+</div>
+
 
       <nav className="page-nav">
   <a href="#destinatari">I DESTINATARI</a> -
