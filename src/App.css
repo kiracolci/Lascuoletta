@@ -319,12 +319,24 @@ html {
   scroll-behavior: smooth;
 }
 
+.countdown-fixed {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  pointer-events: none; /* allow clicks through if needed */
+}
+
 .countdown {
-  margin-top: 1rem;
   background-color: #000;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   display: inline-block;
+  pointer-events: auto; /* restore interaction */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .countdown-text {
@@ -333,4 +345,3 @@ html {
   font-size: 1rem;
   margin: 0;
 }
-

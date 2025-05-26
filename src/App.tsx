@@ -34,9 +34,7 @@ function App() {
       <h1>CALL PER 3 RESIDENZE</h1>
       <div className="date">19 SETTEMBRE – 3 OTTOBRE 2025</div>
       <div className="location">📍 SAN LIBERATORE, FRAZ. COLLESTATTE (TR)</div>
-      <div className="countdown">
-  <Countdown />
-</div>
+      
 
 
       <nav className="page-nav">
@@ -323,6 +321,13 @@ function App() {
 </footer>
 
 </section>
+
+<div className="countdown-fixed">
+  <div className="countdown">
+    <Countdown />
+  </div>
+</div>
+
 
     </div>
   );
