@@ -71,8 +71,8 @@ function App() {
           <div className="activity-card">
             <div className="number">2.</div>
             <p>Una fase di co-progettazione</p>
-            <p>workshop con mentor e ospiti</p>
-            <p>individuazione dei canali di implementazione</p>
+            <p>Workshop con mentor e ospiti</p>
+            <p>Individuazione dei canali di implementazione</p>
           </div>
 
           <div className="activity-card">
@@ -81,8 +81,8 @@ function App() {
               Una fase di elaborazione e presentazione <br />
               (possibile che si prolunghi oltre le date della residenza)
             </p>
-            <p>sviluppo delle proposte creative</p>
-            <p>presentazione sul territorio degli output</p>
+            <p>Sviluppo delle proposte creative</p>
+            <p>Presentazione sul territorio degli output</p>
           </div>
         </div>
       </section>
