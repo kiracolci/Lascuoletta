@@ -51,8 +51,8 @@ nav {
   color: #333;
   font-size: 1rem;
   font-weight: 500;
-  margin-top: 5rem;
-  margin-bottom: 7rem;
+  margin-top: 7rem;
+  margin-bottom: 4rem;
   text-align: center;
 }
 
@@ -346,4 +346,20 @@ html {
   font-weight: 600;
   font-size: 1rem;
   margin: 0;
+}
+
+.download-section {
+  margin-top: 1rem;
+  margin-bottom: -5rem;
+  text-align: center;
+}
+
+.download-link {
+  color: #111;
+  text-decoration: underline;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  display: inline-block;
 }

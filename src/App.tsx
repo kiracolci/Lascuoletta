@@ -34,6 +34,12 @@ function App() {
       <h1>CALL PER 3 RESIDENZE</h1>
       <div className="date">19 SETTEMBRE – 3 OTTOBRE 2025</div>
       <div className="location">📍 SAN LIBERATORE, FRAZ. COLLESTATTE (TR)</div>
+      <div className="download-section">
+  <a href="/call.pdf" download className="download-link">
+  Scarica le informazioni
+  </a>
+</div>
+
       
 
 
