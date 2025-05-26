@@ -50,7 +50,7 @@ nav {
   color: #333;
   font-size: 1rem;
   font-weight: 500;
-  margin-top: 6rem;
+  margin-top: 5.3rem;
   text-align: center;
 }
 
@@ -317,5 +317,20 @@ nav a:hover {
 
 html {
   scroll-behavior: smooth;
+}
+
+.countdown {
+  margin-top: 1rem;
+  background-color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.countdown-text {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
 }
 
