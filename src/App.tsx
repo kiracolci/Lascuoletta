@@ -48,7 +48,7 @@ function App() {
   <a href="#attivita">ATTIVITÀ</a> -
   <a href="#candidatura">CANDIDATURA</a> -
   <a href="#contesto">CONTESTO</a> -
-  <a href="#obiettivi">OBBIETTIVI</a> -
+  <a href="#obiettivi">OBIETTIVI</a> -
   <a href="#scenari">SCENARI DI PROGETTO</a> -
   <a href="#promotori">PROMOTORI</a>
 </nav>
@@ -73,7 +73,7 @@ function App() {
       </div>
       <div className="highlight">
         <h3>3 candidati massimi</h3>
-        <p>Dal 19 settembre al 3 ottobre a San Liberatore, fraz. Collesatte (TR)</p>
+        <p>Dal 19 settembre al 3 ottobre a San Liberatore, fraz. Collestatte (TR)</p>
         <p>
           Alloggio garantito + compenso di <strong>1600€</strong> lordi
         </p>
@@ -114,6 +114,7 @@ function App() {
       </section>
 
       <section id="candidatura"className="submission">
+      <h2>CANDITATURA</h2>
         <p>
         I candidati possono presentare la propria candidatura, a titolo personale o di rappresentanza di gruppo, unicamente attraverso e-mail all’indirizzo         </p>
         <p className="email">scuoletta.sanlib@gmail.com</p>
@@ -156,7 +157,7 @@ function App() {
 </section>
 
 <section id="obiettivi" className="section obiettivi">
-  <h2>OBBIETTIVI DEL BANDO</h2>
+  <h2>OBIETTIVI DEL BANDO</h2>
   <p>
   Il presente bando è una chiamata verso artistə, progettistə e narratori che si sentono portatori potenziali di rigenerazione e che intendono partecipare a un piccolo gruppo di lavoro interdisciplinare, che definisca e promuova una visione di sviluppo per uno spazio ibrido dedicato alle associazioni, alla promozione del territorio e ad attività culturali, artistiche e ludiche.	
 
