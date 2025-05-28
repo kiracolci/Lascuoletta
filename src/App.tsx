@@ -46,10 +46,11 @@ export default function HomePage() {
 
       {/* Footer */}
       <div className="footer-text">
-        <span className={`dot ${blipLeft ? 'active' : ''}`} />
-        <p>FASE: BANDO RICERCA CANDIDATI PER SVILUPPO DEL TERRITORIO</p>
-        <span className={`dot ${blipRight ? 'active' : ''}`} />
-      </div>
+  <span className={`dot ${blipLeft ? 'active' : ''}`} />
+  <p className="footer-center-text">FASE: BANDO RICERCA CANDIDATI PER SVILUPPO DEL TERRITORIO</p>
+  <span className={`dot ${blipRight ? 'active' : ''}`} />
+</div>
+
 
       {/* Popup */}
       {showPopup && (
