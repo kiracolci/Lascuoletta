@@ -20,7 +20,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
   }
   
   
@@ -32,12 +31,14 @@
   }
   
   .logo-orbit-wrapper {
+    margin-top: 20px;
     position: relative;
     width: 400px;
     height: 400px;
   }
   
   .orbiting {
+    margin-top: 20px;
     position: absolute;
     top: 0;
     left: 0;
@@ -48,6 +49,7 @@
   }
   
   .logo-img {
+    margin-top: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -118,29 +120,17 @@
   }
 
   .top-menu {
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 40px;
-    font-family: 'MyFont', sans-serif;
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: underline;
-    font-size: 15px;
-    z-index: 100;
-  }
-  
-  .top-menu {
     display: flex;
     justify-content: center;
+    cursor: pointer;
     gap: 40px;
+    text-decoration: underline;
+    margin-top: 20px; /* Change this if it's higher */
     font-family: 'MyFont', sans-serif;
-    font-size: 16px;
     font-weight: bold;
-    margin-top: 20px;
+    font-size: 16px;
   }
+  
   
   
   
@@ -184,7 +174,7 @@
   }
   
   .bando-button {
-    margin-top: 40px;
+    margin-top: 60px;
     font-family: 'MyFont', sans-serif;
     font-weight: bold;
     font-size: 14px;
@@ -232,7 +222,7 @@
   
     .bando-button {
       font-size: 13px;
-      margin-top: 20px;
+      margin-top: 90px;
     }
   
     .footer-text {
