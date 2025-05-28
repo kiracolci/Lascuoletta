@@ -1,0 +1,200 @@
+/* src/styles/MainPage.css */
+@font-face {
+    font-family: 'MyFont';
+    src: url('./public/Fontspring-DEMO-theseasons-reg.otf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  body {
+    font-family: 'MyFont', sans-serif;
+  }
+  
+
+.main-container {
+    background-color: #fffdf7;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  
+  .center-piece {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo-orbit-wrapper {
+    position: relative;
+    width: 400px;
+    height: 400px;
+  }
+  
+  .orbiting {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: rotate 12s linear infinite;
+    z-index: 1;
+  }
+  
+  .logo-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 180px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  
+  .rotating-image {
+    position: center;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    animation: rotate 15s linear infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  
+
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .footer-text {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    color: black;
+  }
+  
+  .dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #f7d437;
+    opacity: 0.3;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .dot.active {
+    opacity: 1;
+  }
+  
+  .logo-circle {
+    position: center;
+  }
+
+  .top-menu {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+    font-family: 'MyFont', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    z-index: 100;
+  }
+  
+  .top-menu p {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  
+  /* Popup styles */
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+  }
+  
+  .popup-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    font-family: sans-serif;
+    position: relative;
+    max-width: 300px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .popup-content a {
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .bando-button {
+    margin-top: 40px;
+    font-family: 'MyFont', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: center;
+    color: black;
+  }
+  
+  .bg-left,
+.bg-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-left {
+  left: 0;
+}
+
+.bg-right {
+  right: 0;
+  transform: scaleX(-1); /* mirror horizontally */
+}
