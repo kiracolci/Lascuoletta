@@ -198,3 +198,45 @@
   right: 0;
   transform: scaleX(-1); /* mirror horizontally */
 }
+
+@media (max-width: 768px) {
+    .top-menu {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      top: 15px;
+    }
+  
+    .logo-orbit-wrapper {
+      width: 250px;
+      height: 250px;
+    }
+  
+    .logo-img {
+      width: 120px;
+    }
+  
+    .bando-button {
+      font-size: 13px;
+      margin-top: 20px;
+    }
+  
+    .footer-text {
+      font-size: 12px;
+      flex-direction: column;
+      bottom: 20px;
+      gap: 10px;
+    }
+  
+    .dot {
+      width: 12px;
+      height: 12px;
+    }
+  
+    .bg-left,
+    .bg-right {
+      opacity: 0.02; /* less intrusive on mobile */
+    }
+  }
+  
