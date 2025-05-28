@@ -27,7 +27,7 @@ export default function HomePage() {
       {/* Top Menu Bar */}
       <div className="top-menu">
         <p onClick={() => navigate('/bando')}>Il bando</p>
-        <p></p>
+        <p onClick={() => navigate('./Informazione')}>La nostra idea</p>
         <p onClick={() => setShowPopup(true)}>Contatti</p>
       </div>
 

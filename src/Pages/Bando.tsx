@@ -35,7 +35,7 @@ function Countdown() {
       <div className="container">
         {/* Torna alla home */}
         <div className="back-to-home" onClick={() => navigate('/')}>
-          ← Torna alla home
+           ←Torna alla home
         </div>
   
       <div className="logo">la scuoletta</div>

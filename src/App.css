@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 @font-face {
   font-family: 'MyFont';
-  src: url('./public/Fontspring-DEMO-theseasons-reg.otf') format('woff2');
+  src: url('/Fontspring-DEMO-theseasons-reg.otf') format('opentype'); /* Also fix the format if it's .otf */
   font-weight: normal;
   font-style: normal;
 }
@@ -15,6 +15,7 @@ body {
   font-size: 18px; /* increased from default ~16px */
   line-height: 1.8; /* improved vertical rhythm */
 }
+
 
 .container {
   max-width: 1200px;
@@ -97,7 +98,7 @@ nav a:hover {
   background-color: #f7d75e;
   padding: 1.5rem;
   font-family: 'Playfair', serif;
-  margin-top: -5rem;
+  margin-top: -3rem;
   text-align: left;
 }
 
@@ -280,7 +281,7 @@ nav a:hover {
 }
 
 .final-footer {
-  background-color: #f1cd4e; /* dark yellow */
+  background-color: #f7d437; /* dark yellow */
   color: #111;
   display: flex;
   justify-content: space-between;
