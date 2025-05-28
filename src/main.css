@@ -96,6 +96,8 @@
     font-size: 14px;
     color: black;
     text-align: center;
+    margin-top: 60px; /* Add this to create space */
+
   }
   
   .footer-center-text {
@@ -132,8 +134,7 @@
   }
   
   
-  
-  
+
   /* Popup styles */
   .popup {
     position: fixed;
@@ -174,7 +175,7 @@
   }
   
   .bando-button {
-margin-bottom: 5px;
+    margin-top: 40px;
     font-family: 'MyFont', sans-serif;
     font-weight: bold;
     font-size: 14px;
@@ -182,7 +183,10 @@ margin-bottom: 5px;
     text-decoration: underline;
     text-align: center;
     color: black;
+    z-index: 5;
+    position: relative;
   }
+  
   
   .bg-left,
 .bg-right {
@@ -221,13 +225,15 @@ margin-bottom: 5px;
     }
   
     .bando-button {
-      font-size: 13px;
-      margin-top: 90px;
-    }
+        margin-top: 60px;
+        font-size: 13px;
+      }
   
     .footer-text {
         font-size: 12px;
         gap: 10px;
+        margin-top: 20px;
+
       }
     
       .footer-center-text {
