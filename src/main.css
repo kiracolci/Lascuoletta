@@ -86,12 +86,14 @@
     bottom: 40px;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
     font-family: 'Arial', sans-serif;
     font-weight: 600;
     font-size: 14px;
     text-align: center;
     color: black;
+    flex-wrap: wrap;
+    padding: 0 20px;
   }
   
   .dot {
@@ -119,15 +121,23 @@
     display: flex;
     gap: 40px;
     font-family: 'MyFont', sans-serif;
+    cursor: pointer;
     font-weight: bold;
+    text-decoration: underline;
     font-size: 15px;
     z-index: 100;
   }
   
-  .top-menu p {
-    cursor: pointer;
-    text-decoration: underline;
+  .top-menu {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-family: 'MyFont', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
   }
+  
   
   
   /* Popup styles */
@@ -199,14 +209,14 @@
   transform: scaleX(-1); /* mirror horizontally */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
     .top-menu {
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+      gap: 20px;
       font-size: 14px;
-      top: 15px;
     }
+  }
+  
+      
   
     .logo-orbit-wrapper {
       width: 250px;
@@ -223,20 +233,20 @@
     }
   
     .footer-text {
-      font-size: 12px;
-      flex-direction: column;
-      bottom: 20px;
-      gap: 10px;
-    }
-  
-    .dot {
-      width: 12px;
-      height: 12px;
-    }
+        font-size: 12px;
+        gap: 10px;
+        bottom: 30px;
+      }
+    
+      .dot {
+        width: 10px;
+        height: 10px;
+      }
+    
   
     .bg-left,
     .bg-right {
       opacity: 0.02; /* less intrusive on mobile */
     }
-  }
+  
   
