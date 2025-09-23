@@ -47,7 +47,7 @@ export default function HomePage() {
       {/* Footer */}
       <div className="footer-text">
   <span className={`dot ${blipLeft ? 'active' : ''}`} />
-  <p className="footer-center-text">FASE: PREPARAZIONE ALLA RESIDENZA</p>
+  <p className="footer-center-text">FASE: RESIDENZA IN CORSO</p>
   <span className={`dot ${blipRight ? 'active' : ''}`} />
 </div>
 
