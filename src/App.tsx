@@ -40,8 +40,8 @@ export default function HomePage() {
       </div>
 
 {/* VAI AL BANDO button */}
-<div className="bando-button" onClick={() => navigate('/bando')}>
- <span>→ VAI AL BANDO ←</span> 
+<div className="bando-button" onClick={() => navigate('./Informazione')}>
+ <span>→ Cosa stiamo facendo? ←</span> 
 </div>
 
       {/* Footer */}
