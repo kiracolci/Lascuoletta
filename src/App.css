@@ -5,6 +5,8 @@
   font-weight: normal;
   font-style: normal;
 }
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 
 body {
   font-family: 'Roboto Condensed', sans-serif, 'MyFont';
@@ -394,4 +396,226 @@ html {
   .your-text-container {
     padding: 0 16px; /* Or even 12px */
   }
+}
+
+/*here i will write about the residenza page css*/
+/* ==== RESIDENZA – STICKY STAGE CROSSFADE ==== */
+:root{
+  --resi-yellow-50:#fffbe6;
+  --resi-yellow-200:#ffe77a;
+  --resi-yellow-300:#f7d437;
+  --resi-ink:#111;
+  --resi-muted:#5a5a5a;
+  --resi-card:#fffef6;
+  --resi-radius:20px;
+}
+
+body, #root { background: var(--resi-yellow-50) !important; }
+
+.resi-root{ color: var(--resi-ink); }
+
+/* Sticky stage fills viewport; content scrolls after */
+.resi-stage{
+  position: relative;
+  height: 86vh;              /* stage height controls crossfade length */
+  overflow: hidden;
+}
+@media (min-width: 640px){ .resi-stage{ height: 92vh; } }
+
+.resi-stage-bg{
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, var(--resi-yellow-300), var(--resi-yellow-200) 50%, var(--resi-yellow-50));
+}
+
+/* Sticky container */
+.resi-stage-center {
+  position: sticky;
+  top: 0;
+  height: 100vh;                /* full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Title and quote are stacked in the same spot; we cross-fade via JS */
+/* Make sure nothing wraps the app with margins/padding */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+/* 1) Tall parent so the sticky area has room to pin */
+.resi-stage {
+  position: relative;
+  height: 220vh;            /* how long the hero stays pinned */
+  /* DO NOT set overflow here to anything other than visible */
+  overflow: visible;
+}
+
+/* 2) The sticky layer that stays pinned at the top */
+.resi-stage-center {
+  position: sticky;
+  top: 0;                   /* pin to top of viewport */
+  height: 100vh;            /* fills the viewport while pinned */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;               /* above background */
+}
+
+/* 3) Title sits centered inside the sticky layer */
+.resi-stage-title {
+  position: absolute;       /* share the space with the quote */
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: clamp(40px, 8vw, 72px);
+  letter-spacing: -0.02em;
+  /* your JS can animate these two as you scroll: */
+  /* opacity: 1; */
+  /* transform: scale(1); */
+}
+
+/* (Optional) gradient background behind the sticky layer */
+.resi-stage-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #f7d437, #ffe77a 50%, #fffbe6);
+  z-index: 1;
+}
+
+/* 4) Quote shares the same centered slot and can fade in */
+.resi-stage-quote {
+  font-family: 'Great Vibes', cursive;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  font-weight: 800;
+  font-size: clamp(22px, 4.6vw, 40px);
+  z-index: 3;               /* above the title when visible */
+  /* your JS sets opacity/visibility/transform here */
+}
+
+
+/* Content blocks (as before) */
+.resi-block{ padding: 20px 0; }
+.resi-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.resi-grid.flip{ direction: rtl; }
+@media (max-width: 767px){ .resi-grid.flip{ direction: ltr; } }
+
+.resi-media img{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.resi-text p{
+  background: var(--resi-card);
+  padding: 16px 18px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+@media (min-width: 768px){
+  .resi-block{ padding: 28px 0; }
+  .resi-grid{ grid-template-columns: 1fr 1fr; gap: 22px; padding: 0 24px; }
+  .resi-text p{ padding: 22px 24px; font-size: 18px; }
+}
+
+.resi-footer{
+  max-width: 900px;
+  margin: 36px auto 64px;
+  padding: 0 20px;
+  color: var(--resi-muted);
+  text-align: center;
+  font-size: 14px;
+}
+
+
+/* Kill the centered container from the Vite template */
+#root {
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Make the Residenza page truly edge-to-edge */
+.resi-root {
+  margin: 0;
+}
+
+/* Optional: force any full-bleed sections even if some parent adds padding */
+.resi-hero,
+.resi-quote-wrap {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* Full-bleed background for the whole app (also fixes side gutters) */
+body, #root {
+  background: var(--resi-yellow-50) !important; /* same bg as the Residenza page */
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+/* ==== Crossfade stage (already added earlier) ==== */
+/* Keep your previous RESI variables/rules. This is only the extra animation bit. */
+
+/* Each letter gets its own index with --i from inline style */
+/* --- Quote baseline (always) --- */
+.resi-stage-quote{
+  position: absolute;
+  inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  font-weight: 800;
+  font-size: clamp(22px, 4.6vw, 40px);
+  opacity: 0;                  /* JS fades this 0 → 1 */
+  visibility: hidden;          /* JS toggles this */
+  z-index: 2;                  /* sit above the title when visible */
+  pointer-events: none;        /* not interactive */
+  transform-origin: center;
+  will-change: transform, opacity;
+  transition: transform 80ms linear, opacity 80ms linear, visibility 0s linear 100ms;
+}
+
+.resi-stage-title{
+  z-index: 1;
+}
+
+/* Each letter baseline (hidden) */
+.resi-stage-quote .resi-qch{
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px) scale(0.96) rotate(-0.3deg);
+}
+
+/* When activated, letters pop + wiggle AND also get a visible fallback state */
+.resi-stage-quote.active .resi-qch{
+  /* Fallback final state so even if animation is skipped, they appear */
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0);
+  /* Fun animation */
+  animation:
+    resi-pop 520ms cubic-bezier(.22,.8,.3,1) backwards,
+    resi-wiggle 2600ms ease-in-out both;
+  animation-delay: calc(var(--i) * 45ms), calc(400ms + var(--i) * 25ms);
 }
