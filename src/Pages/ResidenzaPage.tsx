@@ -9,6 +9,7 @@ export default function ResidenzaPage() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const quoteRef = useRef<HTMLHeadingElement>(null);
 
+  
   useEffect(() => {
     const onScroll = () => {
       const stage = stageRef.current;

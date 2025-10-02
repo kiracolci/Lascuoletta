@@ -19,7 +19,7 @@ function InfiniteMasonryTight() {
     const dpr = Math.min(2, window.devicePixelRatio || 1);
 
     // 20 images in /public/laresidenza/SA/
-    const sources = Array.from({ length: 67 }, (_, i) => `/laresidenza/SA/${i + 1}.jpeg`);
+    const sources = Array.from({ length: 56 }, (_, i) => `/laresidenza/SA/${i + 1}-min.jpeg`);
 
     let rafId = 0;
     let disposed = false;

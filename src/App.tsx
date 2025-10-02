@@ -6,6 +6,8 @@ import Bando from './Pages/Bando';
 import Informazione from './Pages/Informazione';
 import ResidenzaPage from './Pages/ResidenzaPage';
 import ResidenzaSA from './Pages/ResidenzaSA';
+import Residenza27 from './Pages/Residenza27';
+
 
 export default function App() {
   return (
@@ -16,6 +18,7 @@ export default function App() {
         <Route path="/informazione" element={<Informazione />} />
         <Route path="/la-residenza" element={<ResidenzaPage />} />
         <Route path="/ResidenzaSA" element={<ResidenzaSA />} />
+        <Route path="/Residenza27" element={<Residenza27 />} />
         </Routes>
     </Router>
   );

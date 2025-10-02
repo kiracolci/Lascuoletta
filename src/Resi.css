@@ -280,3 +280,47 @@ html, body, #root { height: 100%; }
   touch-action: none;
 }
 .collage-canvas:active { cursor: grabbing; }
+
+/*page of cosa facciamo*/
+.eventi-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  color: #222;
+}
+
+.eventi-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #4a3f2f; /* tono caldo, naturale */
+}
+
+.evento {
+  background: #fdfaf4; /* beige chiaro */
+  border-left: 6px solid #c28f4c; /* colore caldo */
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.evento-data {
+  font-size: 1.5rem;
+  color: #7a4b12;
+  margin-bottom: 0.5rem;
+}
+
+.evento-sottotitolo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.evento p {
+  margin-bottom: 1rem;
+}
+
