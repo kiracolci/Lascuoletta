@@ -173,8 +173,8 @@ function InfiniteMasonryTight() {
       };
       const onMove = (e: PointerEvent) => {
         if (!dragging) return;
-        ox += e.clientX - lastX;
-        oy += e.clientY - lastY;
+        ox -= e.clientX - lastX;
+        oy -= e.clientY - lastY;
         lastX = e.clientX; lastY = e.clientY;
       };
       const onUp = (e: PointerEvent) => {
