@@ -1,6 +1,8 @@
 // src/Pages/ResidenzaPage.tsx
 import '../Resi.css';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 export default function ResidenzaPage() {
   const stageRef = useRef<HTMLDivElement>(null);
@@ -13,35 +15,33 @@ export default function ResidenzaPage() {
       const title = titleRef.current;
       const quote = quoteRef.current;
       if (!stage || !title || !quote) return;
-  
+
       const rect = stage.getBoundingClientRect();
       const total = Math.max(rect.height, 1);
       const p = Math.min(Math.max((0 - rect.top) / total, 0), 1);
-  
+
       // --- Title: fade out faster, so it disappears early ---
       const tOpacity = 1 - Math.min(p / 0.35, 1); // was 0.6
       const tScale = 1 - Math.min(p, 1) * 0.08;
       title.style.opacity = String(tOpacity);
       title.style.transform = `scale(${tScale})`;
-  
+
       // --- Quote: fade in early, then HOLD fully visible for long time ---
       const qStart = 0.10;   // start appearing sooner
       const qFull  = 0.40;   // reach full opacity early
-      const qHoldEnd = 1.8; // keep fully visible until almost the end
-  
+      const qHoldEnd = 1.8;  // keep fully visible until almost the end (p is clamped at 1)
+
       let qOpacity: number;
       if (p <= qStart) qOpacity = 0;
       else if (p <= qFull) qOpacity = (p - qStart) / (qFull - qStart);  // 0 → 1
       else if (p < qHoldEnd) qOpacity = 1;                               // HOLD
       else qOpacity = 1 - (p - qHoldEnd) / (1 - qHoldEnd);               // gentle fade (optional)
-  
-      const qScale =
-        p <= qFull ? 0.94 + qOpacity * 0.06 : 1.0; // grow in, then stay steady
-  
+
+      const qScale = p <= qFull ? 0.94 + qOpacity * 0.06 : 1.0; // grow in, then stay steady
+
       quote.style.opacity = String(Math.max(0, Math.min(1, qOpacity)));
       quote.style.transform = `scale(${qScale})`;
-  
-      // toggle per-letter animation/visibility
+
       if (qOpacity > 0.01) {
         quote.classList.add('active');
         (quote as HTMLElement).style.visibility = 'visible';
@@ -50,7 +50,7 @@ export default function ResidenzaPage() {
         (quote as HTMLElement).style.visibility = 'hidden';
       }
     };
-  
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
@@ -59,7 +59,6 @@ export default function ResidenzaPage() {
       window.removeEventListener('resize', onScroll);
     };
   }, []);
-  
 
   const quoteStr = '“Quanno non ero voce, ma sussurru”';
   const letters = useMemo(() => Array.from(quoteStr), [quoteStr]);
@@ -71,7 +70,6 @@ export default function ResidenzaPage() {
         <div className="resi-stage-bg" />
         <div className="resi-stage-center">
           <h1 ref={titleRef} className="resi-stage-title">LA RESIDENZA</h1>
-
           <h2 ref={quoteRef} className="resi-stage-quote" aria-label={quoteStr}>
             {letters.map((ch, i) => (
               <span className="resi-qch" style={{ ['--i' as any]: i }} key={i}>
@@ -125,6 +123,19 @@ export default function ResidenzaPage() {
           },
         ]}
       />
+
+      {/* LINKS TO SUBPAGES */}
+      <section className="resi-links">
+        <Link className="resi-link" to="/ResidenzaSA">
+          La Galleria della Scuoletta
+          <span className="resi-link-arrow">→</span>
+        </Link>
+
+        <Link className="resi-link" to="/la-residenza/27">
+          Che cosa abbiamo fatto?
+          <span className="resi-link-arrow">→</span>
+        </Link>
+      </section>
 
       <footer className="resi-footer">
         © {new Date().getFullYear()} La Scuoletta – San Liberatore. Progetto di rigenerazione
