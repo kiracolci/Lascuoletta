@@ -86,7 +86,7 @@ export default function ResidenzaPage() {
       <ResiCarousel
         slides={[
           {
-            img: '/la residenza/1.jpg',
+            img: '/laresidenza/1.jpg',
             alt: 'Inizio della residenza a San Liberatore',
             text: (
               <>
@@ -98,7 +98,7 @@ export default function ResidenzaPage() {
             ),
           },
           {
-            img: '/la residenza/2.png',
+            img: '/laresidenza/2.png',
             alt: 'Citazione di Pietro Lanfiuti Baldi esposta in paese',
             text: (
               <>
@@ -111,7 +111,7 @@ export default function ResidenzaPage() {
             ),
           },
           {
-            img: '/la residenza/3.png',
+            img: '/laresidenza/3.png',
             alt: 'Momenti di co-progettazione con abitanti e resident artist',
             text: (
               <>
