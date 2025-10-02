@@ -132,7 +132,7 @@ export default function ResidenzaPage() {
           <span className="resi-link-arrow">→</span>
         </Link>
 
-        <Link className="resi-link" to="/la-residenza/27">
+        <Link className="resi-link" to="/Residenza27">
           Che cosa abbiamo fatto?
           <span className="resi-link-arrow">→</span>
         </Link>
