@@ -16,11 +16,12 @@
 
 /* Clean page background */
 html, body, #root {
-  background: #fff;           /* solid white page */
-  margin: 0;
-  padding: 0;
-  max-width: none;
-}
+    background: #fffef6;   /* panna uniforme */
+    margin: 0;
+    padding: 0;
+    max-width: none;
+  }
+  
 .resi-root{ color: var(--resi-ink); }
 
 /* =========================
@@ -41,12 +42,11 @@ html, body, #root {
       180deg,
       var(--resi-yellow-300) 0%,
       var(--resi-yellow-200) 50%,
-      #fff 100%
+      #fffef6 100%            /* stesso colore del body */
     );
-    background-repeat: no-repeat;
-    background-attachment: scroll;
     z-index: 1;
   }
+  
   
   
 .resi-stage-center{

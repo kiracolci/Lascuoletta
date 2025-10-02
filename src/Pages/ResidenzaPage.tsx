@@ -1,11 +1,8 @@
 // src/Pages/ResidenzaPage.tsx
 import '../Resi.css';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function ResidenzaPage() {
-  const navigate = useNavigate();
-
   const stageRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const quoteRef = useRef<HTMLHeadingElement>(null);
