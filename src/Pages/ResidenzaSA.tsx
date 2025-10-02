@@ -1,5 +1,5 @@
 // src/Pages/ResidenzaSA.tsx
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../Resi.css";
 
 export default function ResidenzaSA() {
@@ -12,14 +12,18 @@ export default function ResidenzaSA() {
 
 function InfiniteMasonryTight() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d", { alpha: false })!;
     const dpr = Math.min(2, window.devicePixelRatio || 1);
 
-    // 20 images in /public/laresidenza/SA/
-    const sources = Array.from({ length: 67 }, (_, i) => `/laresidenza/SA/${i + 1}-min.jpeg`);
+    // aggiorna qui il numero se cambi le immagini
+    const sources = Array.from(
+      { length: 56 },
+      (_, i) => `/laresidenza/SA/${i + 1}-min.jpeg`
+    );
 
     let rafId = 0;
     let disposed = false;
@@ -49,18 +53,17 @@ function InfiniteMasonryTight() {
       const images = arr.filter((x): x is HTMLImageElement => !!x);
       if (!images.length) return;
 
-      // -------- CONFIG (tight, no-overlap, seam-safe) --------
-      const COLS = 8;            // more columns = denser, fewer large gaps
-      const COL_W = 180;         // column width (keeps photos at nice size)
-      const GUTTER = 18;         // fixed gap between neighbors (no touching)
-      const PADDING = 24;        // inner margin around the whole tile
-      const INNER_H = 1900;      // taller tile => more variety before repeat
+      // ✅ immagini caricate → nascondo il messaggio
+      setLoading(false);
 
-      // small per-column horizontal offset (organic feel)
-      // bounded so neighbor spacing stays >= GUTTER
-      const COL_OFFSET_MAX = Math.floor(GUTTER / 3);  // e.g. 6px if GUTTER=18
+      // -------- CONFIG --------
+      const COLS = 8;
+      const COL_W = 180;
+      const GUTTER = 18;
+      const PADDING = 24;
+      const INNER_H = 1900;
+      const COL_OFFSET_MAX = Math.floor(GUTTER / 3);
 
-      // derived sizes
       const INNER_W = COLS * COL_W + (COLS - 1) * GUTTER;
       const TILE_W = INNER_W + PADDING * 2;
       const TILE_H = INNER_H + PADDING * 2;
@@ -68,19 +71,16 @@ function InfiniteMasonryTight() {
       type Sprite = { x: number; y: number; w: number; h: number; img: HTMLImageElement };
       const sprites: Sprite[] = [];
 
-      // base column X positions (strict grid)
       const baseColX: number[] = Array.from(
         { length: COLS },
         (_, c) => PADDING + c * (COL_W + GUTTER)
       );
 
-      // generate small offsets per column, clamped so neighbors never get closer than GUTTER
       const colOffset: number[] = new Array(COLS).fill(0);
       for (let c = 0; c < COLS; c++) {
-        const off = (Math.random() * 2 - 1) * COL_OFFSET_MAX; // ±max
+        const off = (Math.random() * 2 - 1) * COL_OFFSET_MAX;
         colOffset[c] = Math.round(off);
       }
-      // enforce monotonic increasing with >= COL_W + GUTTER minimum spacing
       const colX: number[] = new Array(COLS);
       colX[0] = baseColX[0] + colOffset[0];
       for (let c = 1; c < COLS; c++) {
@@ -88,15 +88,12 @@ function InfiniteMasonryTight() {
         const raw = baseColX[c] + colOffset[c];
         colX[c] = Math.max(minAllowed, raw);
       }
-      // if we expanded total width, re-center inside the padding area so we don't exceed tile
-      const usedInnerWidth = (colX[COLS - 1] + COL_W) - colX[0];
+      const usedInnerWidth = colX[COLS - 1] + COL_W - colX[0];
       const slack = INNER_W - usedInnerWidth;
       const shift = Math.floor(slack / 2);
       for (let c = 0; c < COLS; c++) colX[c] += shift;
 
-      // column Y cursors
       const colY: number[] = Array.from({ length: COLS }, () => PADDING);
-      // tiny stagger to avoid straight band at top
       for (let c = 0; c < COLS; c++) colY[c] += Math.random() * 40;
 
       const shortestCol = () => {
@@ -105,7 +102,6 @@ function InfiniteMasonryTight() {
         return best;
       };
 
-      // Pack sprites (classic masonry; never cross bottom padding)
       let i = 0;
       let guard = 0;
       const MAX_ITEMS = 1500;
@@ -117,8 +113,8 @@ function InfiniteMasonryTight() {
         const h = Math.round(w * ar);
 
         if (colY[col] + h > TILE_H - PADDING) {
-          colY[col] = Number.POSITIVE_INFINITY;      // saturate this column
-          if (colY.every((yy) => !isFinite(yy))) break; // all done
+          colY[col] = Number.POSITIVE_INFINITY;
+          if (colY.every((yy) => !isFinite(yy))) break;
           i++;
           continue;
         }
@@ -130,18 +126,15 @@ function InfiniteMasonryTight() {
         i++;
       }
 
-      // -------- RENDER (infinite tiling) --------
-      let ox = 0, oy = 0;              // pan offsets (drag to move)
+      let ox = 0, oy = 0;
       let dragging = false;
       let lastX = 0, lastY = 0;
 
       const mod = (n: number, m: number) => ((n % m) + m) % m;
 
       const drawTile = (tx: number, ty: number) => {
-        // fill tile bg so seams are invisible
         ctx.fillStyle = "#fffef6";
         ctx.fillRect(tx, ty, TILE_W, TILE_H);
-        // draw packed photos
         for (const sp of sprites) ctx.drawImage(sp.img, tx + sp.x, ty + sp.y, sp.w, sp.h);
       };
 
@@ -155,7 +148,6 @@ function InfiniteMasonryTight() {
         const startX = -baseX - TILE_W;
         const startY = -baseY - TILE_H;
 
-        // 3x3 tiles around viewport
         for (let ry = 0; ry < 3; ry++) {
           for (let rx = 0; rx < 3; rx++) {
             drawTile(startX + rx * TILE_W, startY + ry * TILE_H);
@@ -165,7 +157,6 @@ function InfiniteMasonryTight() {
         rafId = requestAnimationFrame(loop);
       };
 
-      // drag to pan
       const onDown = (e: PointerEvent) => {
         dragging = true;
         lastX = e.clientX; lastY = e.clientY;
@@ -190,7 +181,6 @@ function InfiniteMasonryTight() {
 
       rafId = requestAnimationFrame(loop);
 
-      // cleanup for handlers created inside preload
       return () => {
         canvas.removeEventListener("pointerdown", onDown);
         canvas.removeEventListener("pointermove", onMove);
@@ -201,7 +191,6 @@ function InfiniteMasonryTight() {
       };
     });
 
-    // outer cleanup
     return () => {
       disposed = true;
       window.removeEventListener("resize", resize);
@@ -209,5 +198,28 @@ function InfiniteMasonryTight() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="collage-canvas" />;
+  return (
+    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+      {loading && (
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            background: "rgba(255,255,255,0.9)",
+            padding: "20px",
+            borderRadius: "10px",
+            fontSize: "18px",
+            fontWeight: "bold",
+            textAlign: "center",
+            zIndex: 10
+          }}
+        >
+          Aspetta, sto caricando le foto!<br />Non chiudere la pagina
+        </div>
+      )}
+      <canvas ref={canvasRef} className="collage-canvas" />
+    </div>
+  );
 }

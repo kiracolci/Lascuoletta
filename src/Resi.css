@@ -282,40 +282,31 @@ html, body, #root { height: 100%; }
 .collage-canvas:active { cursor: grabbing; }
 
 /*page of cosa facciamo*/
-/* Eventi – card */
 .event-card {
     background: #fdfaf4;
     border-left: 6px solid #c28f4c;
     border-radius: 12px;
-    padding: 1.25rem;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   }
   
   .event-date {
     font-size: 1.4rem;
-    margin: 0 0 0.25rem;
+    font-weight: 700;
     color: #7a4b12;
-    text-transform: none; /* mantiene il caso naturale delle date */
-    letter-spacing: 0.3px;
+    margin-bottom: 0.5rem;
   }
   
   .event-subtitle {
     font-size: 1.1rem;
-    margin: 0 0 0.75rem;
     font-weight: 600;
+    margin-bottom: 1rem;
     color: #333;
   }
   
-  .section .event-card p {
-    margin-bottom: 0.9rem;
-  }
-  
-  /* Nav interna: riusa stile .page-nav se già presente */
-  .page-nav a {
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .page-nav a:hover {
-    text-decoration: underline;
+  .event-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
   }
   
