@@ -31,7 +31,7 @@ export default function Home() {
       <div className="top-menu">
         <p onClick={() => navigate('/bando')}>Il bando</p>
         <p onClick={() => navigate('/informazione')}>La nostra idea</p>
-        <p onClick={() => navigate('/la-residenza')}>La Residenza</p>
+        <p onClick={() => navigate('/la-residenza')}>La Residenza 2025</p>
         <p onClick={() => setShowPopup(true)}>Contatti</p>
       </div>
 

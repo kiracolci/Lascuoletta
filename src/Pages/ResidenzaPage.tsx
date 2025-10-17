@@ -70,7 +70,7 @@ export default function ResidenzaPage() {
       <section className="resi-stage" ref={stageRef}>
         <div className="resi-stage-bg" />
         <div className="resi-stage-center">
-          <h1 ref={titleRef} className="resi-stage-title">LA RESIDENZA</h1>
+          <h1 ref={titleRef} className="resi-stage-title">LA RESIDENZA 2025</h1>
           <h2 ref={quoteRef} className="resi-stage-quote" aria-label={quoteStr}>
             {letters.map((ch, i) => (
               <span className="resi-qch" style={{ ['--i' as any]: i }} key={i}>
