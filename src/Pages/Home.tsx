@@ -29,7 +29,7 @@ export default function Home() {
 
       {/* Top Menu Bar */}
       <div className="top-menu">
-        <p onClick={() => navigate('/bando')}>Il bando</p>
+        <p onClick={() => navigate('/bando')}></p>
         <p onClick={() => navigate('/informazione')}>La nostra idea</p>
         <p onClick={() => navigate('/la-residenza')}>La Residenza 2025</p>
         <p onClick={() => setShowPopup(true)}>Contatti</p>
